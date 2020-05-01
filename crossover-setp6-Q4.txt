@@ -1,0 +1,27 @@
+Jira Issue - AESEDI-53447: Root Cause Analysis
+----------------------------------------------
+
+Issue description:
+ - Customer data missing as it was not sent from AES EDI
+
+Impact:
+ - 486,000 records were affected.
+
+Initial Investigation:
+
+- Customer records might be affected as the data was not sent from AES EDI
+- Looking deeply into the issue, it showed that the file with logged customer data was sent.
+
+Analysis:
+
+- The next step after data sent was to check if the file was received by downstream process
+- Analysing the downstream step, it showed that downstream step did not process the file on reception due to issue with 
+AES CIS service (Jira Issue No: AESCIS-38263)
+- Same isssue also affected EDI to CIS monitoring service working on CIS side.
+- Hence the records were not discovered automatically.
+
+Resolution:
+
+- The file was resent and the issue was resolved.
+
+The missing records were discovered at 11:56 AM and processed at 1:00 PM within the stipulated SLA.
